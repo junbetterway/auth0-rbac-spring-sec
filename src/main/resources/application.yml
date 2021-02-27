@@ -1,0 +1,1 @@
+server:  port: 8888spring:  security:    oauth2:      resourceserver:        jwt:          issuer-uri: https://dev-dt7i58nc.eu.auth0.com/auth0:  audience: http://junbetterway/security/angular/api  authoritiesClaimName: permissions
