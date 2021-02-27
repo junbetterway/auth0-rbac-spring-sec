@@ -1,4 +1,4 @@
-# Java Spring Security With Role-Based Access Control Using [Auth0](https://auth0.com/) 
+# Java [Spring Security 5](https://spring.io/projects/spring-security) With Role-Based Access Control Using [Auth0](https://auth0.com/) 
 This repository serves as the backend module to support role-based access control (RBAC) security using __[Auth0](https://auth0.com/)__.
 
 Please clone the __[frontend module](https://github.com/junbetterway/auth0-rbac-angular-ts)__ which is readily integrated to this backend repository.
@@ -30,13 +30,13 @@ spring:
           issuer-uri: <Auth0 Domain>
 auth0:
   audience: <Auth0 API Identifier>
-  authoritiesClaimName: permissions # Auth0 with RBAC enabled ensures that permissions are included in the access_token
+  authoritiesClaimName: permissions
 ```
 
 # Make [Spring Security](https://spring.io/projects/spring-security) Configuration Aware To JWT claims
-By default, OAuth2 standard defines the authorities as part of the claims under __scopes__ field. However, using RBAC enabled with __[Auth0](https://auth0.com/)__ tag the granted authorities as part of the claims under __permissions__ field which explains the value of __authoritiesClaimName__ under the __application.yml__ file.
+By default, OAuth2 standard defines the authorities as part of the claims under __scopes__ field. However, using RBAC enabled with __[Auth0](https://auth0.com/)__ tags the granted authorities as part of the claims under __permissions__ field which explains the value of __authoritiesClaimName__ under the __application.yml__ file.
 
-Now, the remaining task is to make Spring Security aware of this since by default it looks for __scopes__ field for the user granted authorities. I have created a converter which uses the value of __authoritiesClaimName__ under the __application.yml__ file.
+Now, the remaining task is to make Spring Security aware of this since by default it looks for __scopes__ field for the user granted authorities. I have created a converter method which uses the value of __authoritiesClaimName__ under the __application.yml__ file.
 
 ```
     private Converter<Jwt, AbstractAuthenticationToken> getJwtAuthenticationConverter() {
