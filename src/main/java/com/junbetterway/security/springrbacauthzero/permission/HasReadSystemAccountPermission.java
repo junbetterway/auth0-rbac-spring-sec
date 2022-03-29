@@ -9,7 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@PreAuthorize("hasAuthority('SCOPE_create:accounts')")
-public @interface HasCreateAccountPermission {
+@PreAuthorize("hasAuthority('SCOPE_read:system:accounts')")
+public @interface HasReadSystemAccountPermission {
 
 }
