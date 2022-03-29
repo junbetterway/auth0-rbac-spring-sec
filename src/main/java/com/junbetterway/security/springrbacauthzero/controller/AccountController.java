@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +12,7 @@ import com.junbetterway.security.springrbacauthzero.model.Account;
 import com.junbetterway.security.springrbacauthzero.permission.HasReadAccountPermission;
 import com.junbetterway.security.springrbacauthzero.permission.HasReadSystemAccountPermission;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
@@ -22,8 +21,7 @@ import lombok.extern.log4j.Log4j2;
  */
 @RestController
 @RequestMapping(path = "api/account")
-@CrossOrigin(origins = "*", maxAge = 3600)
-@Log4j2
+@Slf4j
 public class AccountController {
 
     @GetMapping("guest")

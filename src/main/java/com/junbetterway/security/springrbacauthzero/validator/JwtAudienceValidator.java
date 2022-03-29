@@ -25,7 +25,7 @@ public class JwtAudienceValidator implements OAuth2TokenValidator<Jwt> {
 	@Override
 	public OAuth2TokenValidatorResult validate(final Jwt jwt) {
 		
-        OAuth2Error error = new OAuth2Error("invalid_token", "The required audience is invalid!", null);
+        var error = new OAuth2Error("invalid_token", "The required audience is invalid!", null);
         
         if (!jwt.getAudience().contains(audience)) {
         	log.error("The required audience is invalid. The JWT aud? {}", jwt.getAudience());
